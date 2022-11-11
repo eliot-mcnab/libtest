@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 10:13:49 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:17:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtest.h"
 
 /*
  * @brief Test the equality of a variable to a given value with a custom
