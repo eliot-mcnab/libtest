@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 18:07:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:09:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 
 //TODO: refactor counting data to t_counter strcuture
 //TODO: add custom methods for counting rather than manual incrementation
+//TODO: add nequal (not equal) method\
+//TODO: add more comparison methods
 
 typedef struct s_runner
 {
