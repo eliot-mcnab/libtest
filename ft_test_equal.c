@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:06:24 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 09:12:46 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 09:53:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
  * @brief Test equality of a variable.
  *
+ * @param unit (t_unit *): the unit to which the tests are applied.
  * @param var (size_t): the variable to test.
  * @param val (size_t): the value the variable should be equal to.
  *

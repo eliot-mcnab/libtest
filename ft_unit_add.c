@@ -6,13 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:30:33 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 09:00:01 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:00:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
-#include "libft.h"
-#include <stdlib.h>
 
 /*
  * @brief Creates a new unit to test.

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 09:51:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:07:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_unit
 }	t_unit;
 
 typedef bool	(*t_tests)(t_unit*);
+typedef int		(*t_f_cmp)(t_any, t_any);
 
 t_runner	*ft_runner_create(void);
 void		ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_test);
