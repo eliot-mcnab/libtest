@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:15:10 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/10 18:25:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:58:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ t_runner	*ft_runner_create(void)
 	{
 		return (NULL);
 	}
+	runner -> passed = 0;
+	runner -> failed = 0;
 	return (runner);
 }

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:30:33 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 10:00:49 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:55:45 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
  *
  * @parm unit_name (t_str): the name of the unit.
  * @param f_unit_tests (t_tests): the tests to preform on the unit.
+ * @param parent_runner (t_runner*): parent runner containing the unit.
  *
  * @return (t_unit *): new unit.
  */
-static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests)
+static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests,
+		t_runner *parent_runner)
 {
 	t_unit	*unit;
 
@@ -29,6 +31,7 @@ static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests)
 	{
 		return (NULL);
 	}
+	unit -> runner = parent_runner;
 	unit -> name = unit_name;
 	unit -> f_tests = f_unit_tests;
 	unit -> passed = 0;
@@ -49,7 +52,7 @@ void	ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_tests)
 	t_unit	*unit;
 	t_list	**node_current;
 
-	unit = ft_create_unit(unit_name, f_unit_tests);
+	unit = ft_create_unit(unit_name, f_unit_tests, runner);
 	if (!unit)
 	{
 		return ;
