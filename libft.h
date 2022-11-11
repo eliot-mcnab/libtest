@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 09:33:33 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 14:53:06 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdarg.h>
 # include <limits.h>
 # include <unistd.h>
-
 
 typedef const char*		t_str;
 typedef unsigned char	t_byte;
@@ -65,6 +64,7 @@ char	*ft_strnstr(t_str source, t_str substr, size_t n);
 char	*ft_strdup(t_str str_original);
 char	*ft_substr(t_str string, t_uint start_index, size_t max_size);
 char	*ft_strjoin(t_str str_a, t_str str_b);
+char	*ft_strnjoin(size_t argc, ...);
 char	*ft_strtrim(t_str to_trim, t_str trim_set);
 char	*ft_itoa(int n);
 char	*ft_strmapi(t_str str, char (*mapping_f)(t_uint, char));
