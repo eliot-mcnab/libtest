@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test_success.c                                  :+:      :+:    :+:   */
+/*   ft_tests_success.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:16:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 10:23:18 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 11:20:44 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
-#include <stdbool.h>
 
 /*
- * @brief Determines if a unit passed all its tests.
+ * @brief Calculates the ratio of successful tests a unit passed.
  *
- * @param unit (t_unit *): the unit to check.
+ * @param unit (t_unit*): the unit that was tested.
  *
- * @return (bool): true if [unit] passed all its tests, false otherwise.
+ * @return (double): the success ratio of the unit's tests.
  */
-bool	ft_test_success(t_unit *unit)
+double	ft_tests_success(t_unit *unit)
 {
-	if (unit -> failed == 0)
-		return (true);
-	else
-		return (false);
+	double	tests_total;
+
+	tests_total = unit -> passed + unit -> failed;
+	return (tests_total / unit -> failed);
 }
