@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:55:36 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 18:02:08 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:04:03 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static double	ft_unit(t_unit *unit)
 
 	test = ft_strdup("test");
 	ft_test_strequal(unit, test, "test");
+	ft_test_strequal(unit, test, "test");
+	ft_test_strequal(unit, test, "nope");
 	return (ft_tests_success(unit));
 }
 

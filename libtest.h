@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 16:54:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:07:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBTEST_H
 
 # include "libft.h"
+#include <stddef.h>
 
 # define BLACK    "\033[0;30m"
 # define GRAY     "\033[1;30m"
@@ -34,12 +35,16 @@
 # define SUCCEESS "\033[0;32msuccess  \033[0;37m"
 # define FAILURE  "\033[0;31mfailure  \033[0;37m"
 
+//TODO: refactor counting data to t_counter strcuture
+//TODO: add custom methods for counting rather than manual incrementation
+
 typedef struct s_runner
 {
 	t_list	*units_head;
 	t_list	*units_last;
 	size_t	passed;
 	size_t	failed;
+	size_t	threshold;
 }	t_runner;
 
 typedef struct s_unit
@@ -49,6 +54,7 @@ typedef struct s_unit
 	double		(*f_tests)(struct s_unit *);
 	size_t		passed;
 	size_t		failed;
+	size_t		threshold;
 }	t_unit;
 
 typedef double	(*t_tests)(t_unit*);

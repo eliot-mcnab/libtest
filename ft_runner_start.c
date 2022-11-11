@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 17:52:01 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:03:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	ft_runner_start(t_runner *runner)
 {
 	ft_putendl_fd(
 		ft_strnjoin(
-			5, WHITE, "Running Tests", CYAN, "    ", LGRAY),
+			5, WHITE, "Running Tests", LCYAN, "    ", LGRAY),
 		1);
 	ft_putendl_fd("", 1);
 	ft_lstiter(runner -> units_head, &ft_runner_run_tests);
