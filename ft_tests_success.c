@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:16:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 11:20:44 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:01:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ double	ft_tests_success(t_unit *unit)
 	double	tests_total;
 
 	tests_total = unit -> passed + unit -> failed;
-	return (tests_total / unit -> failed);
+	return (unit -> passed / tests_total);
 }

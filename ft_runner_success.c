@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:11:23 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 11:20:38 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:01:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ double	ft_runner_success(t_runner *runner)
 	double	units_total;
 
 	units_total = runner -> passed + runner -> failed;
-	return (units_total / runner -> failed);
+	return (runner -> passed / units_total);
 }
