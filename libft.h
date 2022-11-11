@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/10 15:36:20 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 09:33:33 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ double	ft_pow(int a, int b);
 
 // string manipulation
 int		ft_strncmp(t_str str_a, t_str str_b, size_t n);
+int		ft_strcmp(t_str str_a, t_str str_b);
 int		ft_atoi(t_str str_int);
 char	*ft_strchr(t_str str, int c);
 char	*ft_strrchr(t_str str, int c);
@@ -71,6 +72,8 @@ char	**ft_split(t_str to_split, char delimiter);
 size_t	ft_strlen(t_str str);
 size_t	ft_strlcat(char *dest, t_str src, size_t size);
 size_t	ft_strlcpy(char *dest, t_str src, size_t size);
+size_t	ft_strnsum(t_str str, size_t n);
+size_t	ft_strsum(t_str str);
 void	ft_striteri(char *str, void (*f)(t_uint, char *));
 void	ft_strpaste(char *dest, t_str source, size_t from);
 
