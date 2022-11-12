@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:43:33 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:58:33 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBTEST_H
 
 # include "libft.h"
-#include <stddef.h>
 
 # define BLACK    "\033[0;30m"
 # define GRAY     "\033[1;30m"
@@ -63,16 +62,19 @@ typedef struct s_unit
 
 typedef double	(*t_tests)(t_unit*);
 
-// testing
+// unit testing
 t_runner	*ft_runner_create(double threshold);
 void		ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_test,
-		double threshold);
+				double threshold);
 void		ft_run_tests(t_runner *runner);
-void		ft_free_all(t_runner *runner);
+
+// comparison
 bool		ft_test_equal(t_unit *unit, int var, int val);
 bool		ft_test_strequal(t_unit *unit, t_str var, t_str val);
 bool		ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv);
-char		*ft_test_message(t_str str_var, t_str str_val, bool success);
+bool		ft_test_nequal(t_unit *unit, int var, int val);
+bool		ft_test_nstrequal(t_unit *unit, t_str var, t_str val);
+bool		ft_test_ncequal(t_unit *unit, t_any var, t_any val, t_conv *conv);
 
 // counting
 t_counter	*ft_counter(double threshold);
@@ -82,5 +84,9 @@ size_t		ft_countotal(t_counter *counter);
 double		ft_coverage(t_counter *counter);
 bool		ft_coverage_reached(t_counter *counter);
 double		ft_coverage(t_counter *counter);
+
+// utility functions
+void		ft_free_all(t_runner *runner);
+char		*ft_test_message(t_str str_var, t_str str_val, bool success);
 
 #endif

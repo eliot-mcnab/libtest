@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test_cequal.c                                   :+:      :+:    :+:   */
+/*   ft_test_nequal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 09:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:55:39 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 17:39:08 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/12 17:45:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
 
 /*
- * @brief Test the equality of a variable to a given value with a custom
- * 	converter.
+ * @brief Test NON equality of a variable.
  *
  * @param unit (t_unit *): the unit to which the tests are applied.
- * @param var (t_any): the variable to test.
- * @param val (t_any): the value [var] must equal.
- * @param conv (*t_conv): converter used to compare and get string
- * 	representation of [var] and [val].
+ * @param var (int): the variable to test.
+ * @param val (int): the value the variable should NOT be equal to.
  *
- * @return (bool): true if the value of [var] equals [val] according to the 
- * 	comparison function in [conv].
+ * @return (bool): true if the value of [var] DOES NOT match [val],
+ * 	false otherwise.
  */
-bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
+bool	ft_test_nequal(t_unit *unit, int var, int val)
 {
 	t_str	str_var;
 	t_str	str_val;
 	bool	success;
 
-	str_var = conv -> f_tostr(var);
-	str_val = conv -> f_tostr(val);
-	if (conv -> f_cmp(var, val) == 0)
+	str_var = ft_itoa(var);
+	str_val = ft_itoa(val);
+	if (var == val)
 	{
 		ft_countpass(unit -> counter);
 		success = true;
@@ -41,8 +38,8 @@ bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 	else
 	{
 		ft_countfail(unit -> counter);
-		success = true;
+		success = false;
 	}
-	ft_putendl_fd(ft_test_message(str_var, str_val, success), STDOUT);
+	ft_test_message(str_var, str_val, success);
 	return (success);
 }
