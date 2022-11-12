@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tests_success.c                                 :+:      :+:    :+:   */
+/*   ft_coverage_reached.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 10:16:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:07:39 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 16:32:02 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/12 16:41:33 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
 
 /*
- * @brief Calculates the ratio of successful tests a unit passed.
+ * @brief Determines if a counter reached its required threshold of test
+ * 	coverage.
  *
- * @param unit (t_unit*): the unit that was tested.
+ * @param counter (t_counter *): the counter which counted the tests.
  *
- * @return (double): the success ratio of the unit's tests.
+ * @return (bool): true if the counter reached its required coverage threshold,
+ * 	false otherwise.
  */
-double	ft_tests_success(t_unit *unit)
+bool	ft_coverage_reached(t_counter *counter)
 {
-	double	tests_total;
-
-	tests_total = ft_countotal(unit -> counter);
-	return (unit -> counter -> passed / tests_total);
+	return (ft_coverage(counter) > counter -> threshold);
 }

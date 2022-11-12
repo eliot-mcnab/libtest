@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:30:33 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:15:46 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:26:08 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @return (t_unit *): new unit.
  */
 static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests,
-		t_runner *parent_runner)
+		double threshold, t_runner *parent_runner)
 {
 	t_unit	*unit;
 
@@ -34,7 +34,7 @@ static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests,
 	unit -> runner = parent_runner;
 	unit -> name = unit_name;
 	unit -> f_tests = f_unit_tests;
-	unit -> counter = ft_counter(.75);
+	unit -> counter = ft_counter(threshold);
 	return (unit);
 }
 
@@ -45,13 +45,16 @@ static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests,
  * 	tests.
  * @param unit_name (t_str): the name of the unit to test.
  * @param f_unit_tests (bool(t_unit*)): the tests to run for the unit.
+ * @param threshold (double): required unit test coverage for testing on this
+ * 	unit to be considered valid.
  */
-void	ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_tests)
+void	ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_tests,
+		double threshold)
 {
 	t_unit	*unit;
 	t_list	**node_current;
 
-	unit = ft_create_unit(unit_name, f_unit_tests, runner);
+	unit = ft_create_unit(unit_name, f_unit_tests, threshold, runner);
 	if (!unit)
 	{
 		return ;

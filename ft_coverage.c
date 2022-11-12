@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_runner_success.c                                :+:      :+:    :+:   */
+/*   ft_coverage.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 11:11:23 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 18:01:19 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 16:33:09 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/12 16:39:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
 
 /*
- * @brief Calculates the ratio of units in a runner whose tests were all
- * 	successful.
+ * @brief Determies test coverage as logged by a [counter].
  *
- * @param runner (t_runner*): the runner containing the units.
+ * @param counter (t_counter *): the counter which counted successful tests.
  *
- * @return (double): the success ratio of the units in the runner.
+ * @return (double): test coverage as counted by [counter].
  */
-double	ft_runner_success(t_runner *runner)
+double	ft_coverage(t_counter *counter)
 {
-	double	units_total;
+	double	tests_total;
 
-	units_total = runner -> passed + runner -> failed;
-	return (runner -> passed / units_total);
+	tests_total = ft_countotal(counter);
+	return (counter -> passed / tests_total);
 }

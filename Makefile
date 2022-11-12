@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/12 16:10:17 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/12 16:45:06 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ define CFILES
 	ft_runner_create.c	ft_runner_start.c	ft_runner_success.c	ft_test_cequal.c
 	ft_test_equal.c		ft_test_strequal.c	ft_tests_success.c	ft_unit_add.c
 	ft_test_message.c	ft_counter.c		ft_countfail.c		ft_countpass.c
-	ft_countotal.c
+	ft_countotal.c		ft_coverage.c		ft_coverage_reached.c
 endef
 
 # .o files
@@ -100,29 +100,29 @@ display:
 $(BINARY): $(OFILES)
 	@$(AR) $(AFLAGS) $@ $^ $(AFILES)
 	@echo "$$SEPERATOR"
-	@echo "${WHITE}${@} ${GREEN}built successfully!"
+	@echo "${WHITE}${@} ${GREEN}built successfully!${LGRAY}"
 
 # for an object file to be built, the associated c file must exist
 $(ODIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c -o $@ $^
-	@echo "${LGRAY}${@} ${GREEN}built successfully!"
+	@echo "${LGRAY}${@} ${GREEN}built successfully!${LGRAY}"
 
 # removes all .o files
 clean: display
 	@rm -f $(OFILES) $(TOFILES)
-	@echo "${RED} all object files deleted successfully"
+	@echo "${RED} all object files deleted successfully${LGRAY}"
 
 # removes test binary
 tclean: clean
 	@rm -f $(./test)
 	@echo "${RED}"
-	@echo "$(RED) test binary deleted"
+	@echo "$(RED) test binary deleted${LGRAY}"
 
 # removes all .o files and the library binary
 fclean: clean tclean
 	@rm -f $(BINARY)
 	@echo "${RED}"
-	@echo "${LRED} ${WHITE}${BINARY} ${LRED}deleted successfully"	
+	@echo "${LRED} ${WHITE}${BINARY} ${LRED}deleted successfully${LGRAY}"
 	@echo "$$SEPERATOR"
 
 # removes all generated files and re-builds the binary
@@ -130,20 +130,20 @@ re: fclean all
 
 # to run tests, binary must first be built 
 test: display buildtest	
-	@echo "${LGREEN}running ${WHITE}${TFILES}${LGREEN} ..."
+	@echo "${LGREEN}running ${WHITE}${TFILES}${LGREEN} ...${LGRAY}"
 	@echo "$$SEPERATOR"
 	@./test
 
 # for test binary to be built, all relevant object files must be built first
 buildtest: $(TOFILES) $(OFILES)
 	@$(CC) $(CFLAS) -o test $^ $(AFILES)
-	@echo "${WHITE}test ${GREEN}built successfully!"
+	@echo "${WHITE}test ${GREEN}built successfully!${LGRAY}"
 
 # rebuilds libft and copies it over to current directory
 update:
 	@(cd ../libft && make)
 	@cp ../libft/libft.a ./
 	@cp ../libft/libft.h ./
-	@echo "${LGREEN} ${WHITE}libft ${LGREEN}updated successfully"
+	@echo "${LGREEN} ${WHITE}libft ${LGREEN}updated successfully${LGRAY}"
 
 .PHONY: all display clean tclean fclean re test buildtest update

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:55:36 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:12:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:42:58 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static double	ft_unit(t_unit *unit)
 
 	test = ft_strdup("test");
 	ft_test_strequal(unit, test, "test");
-	return (ft_tests_success(unit));
+	ft_test_strequal(unit, test, "nope");
+	return (ft_coverage(unit -> counter));
 }
 
 int	main(int argc, char *argv[])
@@ -29,8 +30,8 @@ int	main(int argc, char *argv[])
 
 	(void) argc;
 	(void) argv;
-	runner = ft_runner_create();
-	ft_unit_add(runner, "test", &ft_unit);
+	runner = ft_runner_create(.75);
+	ft_unit_add(runner, "test", &ft_unit, .75);
 	ft_runner_start(runner);
 	return (ft_runner_success(runner));
 }

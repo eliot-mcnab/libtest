@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:18:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:42:27 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*ft_unit_header(t_unit *unit)
  */
 static char	*ft_unit_recap(t_unit *unit)
 {
-	double	success_rate;
 	t_str	name;
 	t_str	tests_passed;
 	t_str	tests_total;
@@ -39,8 +38,7 @@ static char	*ft_unit_recap(t_unit *unit)
 	name = unit -> name;
 	tests_passed = ft_itoa(unit -> counter -> passed);
 	tests_total = ft_itoa(ft_countotal(unit -> counter));
-	success_rate = ft_tests_success(unit);
-	if (success_rate > .5)
+	if (ft_coverage_reached(unit -> counter))
 	{
 		str_passed = SUCCEESS;
 	}
@@ -63,7 +61,7 @@ static char	*ft_runner_message(t_runner *runner)
 	units_total = ft_itoa(ft_countotal(runner -> counter));
 	units_passed = ft_itoa(runner -> counter -> passed);
 	success_rate = ft_runner_success(runner);
-	if (success_rate > .5)
+	if (success_rate > runner -> counter -> threshold)
 	{
 		str_passed = SUCCEESS;
 	}
@@ -87,7 +85,8 @@ static void	ft_runner_run_tests(t_any any)
 	unit = (t_unit *)any;
 	ft_putendl_fd(ft_unit_header(unit), STDOUT);
 	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
-	if (unit -> f_tests(unit))
+	unit -> f_tests(unit);
+	if (ft_coverage_reached(unit -> runner -> counter))
 	{
 		ft_countpass(unit -> runner -> counter);
 	}
