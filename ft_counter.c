@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:53:13 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:55:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:15:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  *
  * @return (t_counter *): new counter.
  */
-t_counter	*ft_counter(size_t threshold)
+t_counter	*ft_counter(double threshold)
 {
 	t_counter	*counter;
 
@@ -30,6 +30,6 @@ t_counter	*ft_counter(size_t threshold)
 	}
 	counter -> passed = 0;
 	counter -> failed = 0;
-	counter -> threshold = 0;
+	counter -> threshold = threshold;
 	return (counter);
 }

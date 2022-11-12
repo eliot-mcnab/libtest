@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:49:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:18:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static char	*ft_unit_recap(t_unit *unit)
 	t_str	str_passed;
 
 	name = unit -> name;
-	tests_passed = ft_itoa(unit -> passed);
-	tests_total = ft_itoa(unit -> passed + unit -> failed);
+	tests_passed = ft_itoa(unit -> counter -> passed);
+	tests_total = ft_itoa(ft_countotal(unit -> counter));
 	success_rate = ft_tests_success(unit);
 	if (success_rate > .5)
 	{
@@ -60,8 +60,8 @@ static char	*ft_runner_message(t_runner *runner)
 	t_str	units_passed;
 	t_str	str_passed;
 
-	units_total = ft_itoa(runner -> passed + runner -> failed);
-	units_passed = ft_itoa(runner -> passed);
+	units_total = ft_itoa(ft_countotal(runner -> counter));
+	units_passed = ft_itoa(runner -> counter -> passed);
 	success_rate = ft_runner_success(runner);
 	if (success_rate > .5)
 	{
@@ -89,11 +89,11 @@ static void	ft_runner_run_tests(t_any any)
 	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
 	if (unit -> f_tests(unit))
 	{
-		(unit -> runner -> passed)++;
+		ft_countpass(unit -> runner -> counter);
 	}
 	else
 	{
-		(unit -> runner -> failed)++;
+		ft_countfail(unit -> runner -> counter);
 	}
 	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
 	ft_putendl_fd(ft_unit_recap(unit), STDOUT);

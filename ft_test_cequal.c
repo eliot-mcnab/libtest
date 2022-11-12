@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:47:24 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:02:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 	str_val = conv -> f_tostr(val);
 	if (conv -> f_cmp(var, val) == 0)
 	{
-		(unit -> passed)++;
+		ft_countpass(unit -> counter);
 		success = true;
 	}
 	else
 	{
-		(unit -> failed)++;
+		ft_countfail(unit -> counter);
 		success = true;
 	}
 	ft_putendl_fd(ft_test_message(str_var, str_val, success), STDOUT);

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:15:10 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:48:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:03:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ bool	ft_test_strequal(t_unit *unit, t_str var, t_str val)
 
 	if (ft_strcmp(var, val) == 0)
 	{
-		(unit -> passed)++;
+		ft_countpass(unit -> counter);
 		success = true;
 	}
 	else
 	{
-		(unit -> failed)++;
+		ft_countfail(unit -> counter);
 		success = false;
 	}
 	ft_putendl_fd(ft_test_message(var, val, success), STDOUT);

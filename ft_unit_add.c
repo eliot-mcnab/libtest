@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:30:33 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 10:55:45 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:15:46 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static t_unit	*ft_create_unit(t_str unit_name, t_tests f_unit_tests,
 	unit -> runner = parent_runner;
 	unit -> name = unit_name;
 	unit -> f_tests = f_unit_tests;
-	unit -> passed = 0;
-	unit -> failed = 0;
+	unit -> counter = ft_counter(.75);
 	return (unit);
 }
 

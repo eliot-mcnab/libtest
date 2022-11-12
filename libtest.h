@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:00:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:16:18 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,14 @@ typedef struct s_counter
 {
 	size_t	passed;
 	size_t	failed;
-	size_t	threshold;
+	double	threshold;
 }	t_counter;
 
 typedef struct s_runner
 {
-	t_list	*units_head;
-	t_list	*units_last;
-	size_t	passed;
-	size_t	failed;
-	size_t	threshold;
+	t_list		*units_head;
+	t_list		*units_last;
+	t_counter	*counter;
 }	t_runner;
 
 typedef struct s_unit
@@ -62,9 +60,7 @@ typedef struct s_unit
 	t_runner	*runner;
 	t_str		name;
 	double		(*f_tests)(struct s_unit *);
-	size_t		passed;
-	size_t		failed;
-	size_t		threshold;
+	t_counter	*counter;
 }	t_unit;
 
 typedef double	(*t_tests)(t_unit*);
@@ -80,8 +76,9 @@ double		ft_runner_success(t_runner *runner);
 char		*ft_test_message(t_str str_var, t_str str_val, bool success);
 
 // counting
-t_counter	*ft_counter(size_t threshold);
+t_counter	*ft_counter(double threshold);
 void		ft_countpass(t_counter *counter);
 void		ft_countfail(t_counter *counter);
+size_t		ft_countotal(t_counter *counter);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:06:24 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:48:12 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:03:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ bool	ft_test_equal(t_unit *unit, size_t var, size_t val)
 	str_val = ft_itoa(val);
 	if (var == val)
 	{
-		(unit -> passed)++;
+		ft_countpass(unit -> counter);
 		success = true;
 	}
 	else
 	{
-		(unit -> failed)++;
+		ft_countfail(unit -> counter);
 		success = false;
 	}
 	ft_putendl_fd(ft_test_message(str_var, str_val, success), STDOUT);
