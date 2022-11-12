@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/12 13:31:31 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/12 14:14:09 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ export SEPERATOR
 define CFILES
 	ft_runner_create.c	ft_runner_start.c	ft_runner_success.c	ft_test_cequal.c
 	ft_test_equal.c		ft_test_strequal.c	ft_tests_success.c	ft_unit_add.c
+	ft_test_message.c
 endef
 
 # .o files
@@ -77,10 +78,14 @@ AFLAGS = -rcs
 CC = gcc
 OPT = 0
 DEBUG = -g
-CFLAS = $(DEBUG) -Wall -Wextra -Werror -L $(ADIR) -l $(patsubst lib%.a, %, $(AFILES)) -O$(OPT)
+CFLAGS = $(DEBUG) -Wall -Wextra -Werror -O$(OPT)
 
-# binray name
+# binary name
 BINARY = libtest.a
+
+# test files
+TFILES = test.c
+TOFILES = $(patsubst %.c, $(ODIR)%.o, $(TFILES))
 
 # by default, builds the binary
 all: display $(BINARY)
@@ -92,25 +97,45 @@ display:
 
 # to buld the binary, all associated object files must have been compiled
 $(BINARY): $(OFILES)
-	@$(AR) $(AFLAGS) $@ $^
+	@$(AR) $(AFLAGS) $@ $^ $(AFILES)
 	@echo "$$SEPERATOR"
-	@echo "${WHITE} ${@} ${GREEN}built successfully!"
+	@echo "${WHITE}${@} ${GREEN}built successfully!"
 
 # for an object file to be built, the associated c file must exist
 $(ODIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c -o $@ $^
-	@echo "${LGRAY} ${@} ${GREEN}built successfully!"
+	@echo "${LGRAY}${@} ${GREEN}built successfully!"
 
+# removes all .o files
 clean: display
-	@rm -f $(OFILES)
+	@rm -f $(OFILES) $(TOFILES)
 	@echo "${RED} all object files deleted successfully"
 
-fclean: clean
+# removes test binary
+tclean: clean
+	@rm -f $(./test)
+	@echo "${RED}"
+	@echo "$(RED) test binary deleted"
+
+# removes all .o files and the library binary
+fclean: clean tclean
 	@rm -f $(BINARY)
-	@echo "${LRED}"
-	@echo "${LRED} ${WHITE}${BINARY} ${LRED}deleted successfully"
+	@echo "${RED}"
+	@echo "${LRED} ${WHITE}${BINARY} ${LRED}deleted successfully"	
 	@echo "$$SEPERATOR"
 
+# removes all generated files and re-builds the binary
 re: fclean all
 
-.PHONY: all display clean fclean re
+# to run tests, binary must first be built 
+test: display buildtest	
+	@echo "${LGREEN}running ${WHITE}${TFILES}${LGREEN} ..."
+	@echo "$$SEPERATOR"
+	@./test
+
+# for test binary to be built, all relevant object files must be built first
+buildtest: $(TOFILES) $(OFILES)
+	@$(CC) $(CFLAS) -o test $^ $(AFILES)
+	@echo "${WHITE}test ${GREEN}built successfully!"
+
+.PHONY: all display clean tclean fclean re test buildtest
