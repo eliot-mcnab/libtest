@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 18:09:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:10:30 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@
 # define SUCCEESS "\033[0;32msuccess  \033[0;37m"
 # define FAILURE  "\033[0;31mfailure  \033[0;37m"
 
-//TODO: refactor counting data to t_counter strcuture
-//TODO: add custom methods for counting rather than manual incrementation
-//TODO: add nequal (not equal) method\
-//TODO: add more comparison methods
+/*
+TODO: refactor counting data to t_counter strcuture
+TODO: add custom methods for counting rather than manual incrementation
+TODO: add nequal (not equal) method\
+TODO: add more comparison methods */
 
 typedef struct s_runner
 {

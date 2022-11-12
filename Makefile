@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/11 12:53:03 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/12 13:31:31 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,21 @@ $(BINARY): $(OFILES)
 	@echo "$$SEPERATOR"
 	@echo "${WHITE} ${@} ${GREEN}built successfully!"
 
+# for an object file to be built, the associated c file must exist
 $(ODIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c -o $@ $^
 	@echo "${LGRAY} ${@} ${GREEN}built successfully!"
+
+clean: display
+	@rm -f $(OFILES)
+	@echo "${RED} all object files deleted successfully"
+
+fclean: clean
+	@rm -f $(BINARY)
+	@echo "${LRED}"
+	@echo "${LRED} ${WHITE}${BINARY} ${LRED}deleted successfully"
+	@echo "$$SEPERATOR"
+
+re: fclean all
+
+.PHONY: all display clean fclean re

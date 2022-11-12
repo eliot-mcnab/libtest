@@ -1,2 +1,5 @@
 # ignores object files in objs/
 objs/
+
+#ignores the library binary
+libtest.a
