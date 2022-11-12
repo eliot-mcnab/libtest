@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 15:41:16 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:00:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBTEST_H
 
 # include "libft.h"
+#include <stddef.h>
 
 # define BLACK    "\033[0;30m"
 # define GRAY     "\033[1;30m"
@@ -39,6 +40,13 @@ TODO: refactor counting data to t_counter strcuture
 TODO: add custom methods for counting rather than manual incrementation
 TODO: add nequal (not equal) method\
 TODO: add more comparison methods */
+
+typedef struct s_counter
+{
+	size_t	passed;
+	size_t	failed;
+	size_t	threshold;
+}	t_counter;
 
 typedef struct s_runner
 {
@@ -70,5 +78,10 @@ bool		ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv);
 double		ft_tests_success(t_unit *unit);
 double		ft_runner_success(t_runner *runner);
 char		*ft_test_message(t_str str_var, t_str str_val, bool success);
+
+// counting
+t_counter	*ft_counter(size_t threshold);
+void		ft_countpass(t_counter *counter);
+void		ft_countfail(t_counter *counter);
 
 #endif
