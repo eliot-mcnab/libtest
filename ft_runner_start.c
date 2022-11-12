@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:42:27 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:47:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,13 @@ static char	*ft_unit_recap(t_unit *unit)
 
 static char	*ft_runner_message(t_runner *runner)
 {
-	double	success_rate;
 	t_str	units_total;
 	t_str	units_passed;
 	t_str	str_passed;
 
 	units_total = ft_itoa(ft_countotal(runner -> counter));
 	units_passed = ft_itoa(runner -> counter -> passed);
-	success_rate = ft_runner_success(runner);
-	if (success_rate > runner -> counter -> threshold)
+	if (ft_coverage_reached(runner -> counter))
 	{
 		str_passed = SUCCEESS;
 	}
