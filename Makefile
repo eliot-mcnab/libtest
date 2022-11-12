@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/12 16:45:06 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/12 17:02:12 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ define CFILES
 	ft_test_equal.c		ft_test_strequal.c	ft_tests_success.c	ft_unit_add.c
 	ft_test_message.c	ft_counter.c		ft_countfail.c		ft_countpass.c
 	ft_countotal.c		ft_coverage.c		ft_coverage_reached.c
+	ft_free_all.c
 endef
 
 # .o files

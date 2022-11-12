@@ -6,12 +6,17 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:47:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:01:33 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
 
+/*
+ * @brief Generates header string for a unit annoucing its name.
+ *
+ * @param unit (t_unit *): the unit to generate the header for.
+ */
 static char	*ft_unit_header(t_unit *unit)
 {
 	t_str	name;
@@ -26,7 +31,7 @@ static char	*ft_unit_header(t_unit *unit)
  *
  * @param unit (t_unit *): the unit for which to generate the message.
  *
- * @return ()
+ * @return (char *): message summarizing test in the given [unit].
  */
 static char	*ft_unit_recap(t_unit *unit)
 {
@@ -51,6 +56,13 @@ static char	*ft_unit_recap(t_unit *unit)
 			tests_total, " tests passed - ", str_passed));
 }
 
+/*
+ * @brief Generates a string summarizing test results for a [runner].
+ *
+ * @param runner (t_runner *: the runner to generate the message for.
+ *
+ * @return (char *): message summarizing units tests in the [runner].
+ */
 static char	*ft_runner_message(t_runner *runner)
 {
 	t_str	units_total;
@@ -111,4 +123,5 @@ void	ft_runner_start(t_runner *runner)
 	ft_putendl_fd("", STDOUT);
 	ft_lstiter(runner -> units_head, &ft_runner_run_tests);
 	ft_putendl_fd(ft_runner_message(runner), STDOUT);
+	ft_free_all(runner);
 }
