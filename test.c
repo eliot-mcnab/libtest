@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:55:36 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:42:58 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:13:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int argc, char *argv[])
 
 	(void) argc;
 	(void) argv;
-	runner = ft_runner_create(.75);
-	ft_unit_add(runner, "test", &ft_unit, .75);
-	ft_runner_start(runner);
-	return (ft_runner_success(runner));
+	runner = ft_runner_create(.5);
+	ft_unit_add(runner, "test", &ft_unit, .6);
+	ft_run_tests(runner);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:32:02 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:41:33 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:05:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@
  */
 bool	ft_coverage_reached(t_counter *counter)
 {
-	return (ft_coverage(counter) > counter -> threshold);
+	return (ft_coverage(counter) >= counter -> threshold);
 }

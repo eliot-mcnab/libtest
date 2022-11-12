@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_runner_start.c                                  :+:      :+:    :+:   */
+/*   ft_run_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:01:33 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:13:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void	ft_runner_run_tests(t_any any)
 	ft_putendl_fd(ft_unit_header(unit), STDOUT);
 	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
 	unit -> f_tests(unit);
-	if (ft_coverage_reached(unit -> runner -> counter))
+	if (ft_coverage_reached(unit -> counter))
 	{
 		ft_countpass(unit -> runner -> counter);
 	}
@@ -114,7 +114,7 @@ static void	ft_runner_run_tests(t_any any)
  *
  * @param  runner (t_runner*): the runner containing the units to test.
  */
-void	ft_runner_start(t_runner *runner)
+void	ft_run_tests(t_runner *runner)
 {
 	ft_putendl_fd(
 		ft_strnjoin(

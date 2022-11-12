@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:01:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:04:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ typedef double	(*t_tests)(t_unit*);
 t_runner	*ft_runner_create(double threshold);
 void		ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_test,
 		double threshold);
-void		ft_runner_start(t_runner *runner);
+void		ft_run_tests(t_runner *runner);
 void		ft_free_all(t_runner *runner);
 bool		ft_test_equal(t_unit *unit, size_t var, size_t val);
 bool		ft_test_strequal(t_unit *unit, t_str var, t_str val);
 bool		ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv);
-double		ft_runner_success(t_runner *runner);
 char		*ft_test_message(t_str str_var, t_str str_val, bool success);
 
 // counting
