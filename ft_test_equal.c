@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:06:24 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 16:03:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:43:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
  * @brief Test equality of a variable.
  *
  * @param unit (t_unit *): the unit to which the tests are applied.
- * @param var (size_t): the variable to test.
- * @param val (size_t): the value the variable should be equal to.
+ * @param var (int): the variable to test.
+ * @param val (int): the value the variable should be equal to.
  *
  * @return (bool): true if the value of [var] matches [val], false otherwise.
  */
-bool	ft_test_equal(t_unit *unit, size_t var, size_t val)
+bool	ft_test_equal(t_unit *unit, int var, int val)
 {
 	t_str	str_var;
 	t_str	str_val;
