@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/12 14:14:09 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/12 15:36:56 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,4 +138,11 @@ buildtest: $(TOFILES) $(OFILES)
 	@$(CC) $(CFLAS) -o test $^ $(AFILES)
 	@echo "${WHITE}test ${GREEN}built successfully!"
 
-.PHONY: all display clean tclean fclean re test buildtest
+# rebuilds libft and copies it over to current directory
+update:
+	@(cd ../libft && make)
+	@cp ../libft/libft.a ./
+	@cp ../libft/libft.h ./
+	@echo "${LGREEN} ${WHITE}libft ${LGREEN}updated successfully"
+
+.PHONY: all display clean tclean fclean re test buildtest update

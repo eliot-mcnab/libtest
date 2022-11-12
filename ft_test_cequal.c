@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 10:17:55 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:47:24 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,29 @@
  * @param unit (t_unit *): the unit to which the tests are applied.
  * @param var (t_any): the variable to test.
  * @param val (t_any): the value [var] must equal.
- * @param f_cmp (int(t_any, t_any)): comparison function used to check equality.
+ * @param conv (*t_conv): converter used to compare and get string
+ * 	representation of [var] and [val].
  *
  * @return (bool): true if the value of [var] equals [val] according to [f_cmp].
  */
-bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_f_cmp f_cmp)
+bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 {
-	if (f_cmp(var, val) == 0)
+	t_str	str_var;
+	t_str	str_val;
+	bool	success;
+
+	str_var = conv -> f_tostr(var);
+	str_val = conv -> f_tostr(val);
+	if (conv -> f_cmp(var, val) == 0)
 	{
 		(unit -> passed)++;
-		return (true);
+		success = true;
 	}
 	else
 	{
 		(unit -> failed)++;
-		return (false);
+		success = true;
 	}
+	ft_putendl_fd(ft_test_message(str_var, str_val, success), STDOUT);
+	return (success);
 }

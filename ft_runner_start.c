@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 18:03:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:49:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ static void	ft_runner_run_tests(t_any any)
 	t_unit	*unit;
 
 	unit = (t_unit *)any;
-	ft_putendl_fd(ft_unit_header(unit), 1);
-	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), 1);
+	ft_putendl_fd(ft_unit_header(unit), STDOUT);
+	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
 	if (unit -> f_tests(unit))
 	{
 		(unit -> runner -> passed)++;
@@ -95,9 +95,9 @@ static void	ft_runner_run_tests(t_any any)
 	{
 		(unit -> runner -> failed)++;
 	}
-	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), 1);
-	ft_putendl_fd(ft_unit_recap(unit), 1);
-	ft_putendl_fd("", 1);
+	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
+	ft_putendl_fd(ft_unit_recap(unit), STDOUT);
+	ft_putendl_fd("", STDOUT);
 }
 
 /*
@@ -110,8 +110,8 @@ void	ft_runner_start(t_runner *runner)
 	ft_putendl_fd(
 		ft_strnjoin(
 			5, WHITE, "Running Tests", LCYAN, "    ", LGRAY),
-		1);
-	ft_putendl_fd("", 1);
+		STDOUT);
+	ft_putendl_fd("", STDOUT);
 	ft_lstiter(runner -> units_head, &ft_runner_run_tests);
-	ft_putendl_fd(ft_runner_message(runner), 1);
+	ft_putendl_fd(ft_runner_message(runner), STDOUT);
 }

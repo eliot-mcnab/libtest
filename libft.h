@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/11 14:53:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:45:21 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <limits.h>
 # include <unistd.h>
 
+# define STDOUT 1
+# define STDERR 2
+
 typedef const char*		t_str;
 typedef unsigned char	t_byte;
 typedef unsigned int	t_uint;
@@ -31,6 +34,15 @@ typedef struct s_list
 	t_any			content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_conv
+{
+	int		(*f_cmp)(t_any, t_any);
+	char	(*f_tochar)(t_any);
+	int		(*f_toint)(t_any);
+	long	(*f_tolong)(t_any);
+	char	*(*f_tostr)(t_any);
+}	t_conv;
 
 // character manipulation
 int		ft_islower(int c);
@@ -105,5 +117,13 @@ void	ft_lstiter(t_list *head, void (*f)(t_any));
 void	ft_lstadd_back(t_list **head, t_list *node_new);
 void	ft_lstdelone(t_list *node, void (*f)(t_any));
 void	ft_lstclear(t_list **head, void (*f)(t_any));
+
+// type conversion
+t_conv	*ft_converter(void);
+void	ft_convtoint(t_conv *conv, int (*f_toint)(t_any));
+void	ft_convtochar(t_conv *conv, char (*f_tochar)(t_any));
+void	ft_convtostr(t_conv *conv, char *(*f_tostr)(t_any));
+void	ft_convtolong(t_conv *conv, long(*f_tolong)(t_any));
+void	ft_convcmp(t_conv *conv, int (*f_cmp)(t_any, t_any));
 
 #endif
