@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:04:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:16:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_unit
 
 typedef double	(*t_tests)(t_unit*);
 
+// testing
 t_runner	*ft_runner_create(double threshold);
 void		ft_unit_add(t_runner *runner, t_str unit_name, t_tests f_unit_test,
 		double threshold);

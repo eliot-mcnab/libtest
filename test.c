@@ -6,13 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:55:36 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:13:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:16:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libtest.h"
-#include <stdio.h>
 
 static double	ft_unit(t_unit *unit)
 {

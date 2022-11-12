@@ -6,10 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 10:46:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:13:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:34:02 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "libtest.h"
 
 /*
@@ -33,27 +34,30 @@ static char	*ft_unit_header(t_unit *unit)
  *
  * @return (char *): message summarizing test in the given [unit].
  */
-static char	*ft_unit_recap(t_unit *unit)
+static char	*ft_unit_message(t_unit *unit)
 {
 	t_str	name;
-	t_str	tests_passed;
-	t_str	tests_total;
 	t_str	str_passed;
+	t_str	str_total;
+	t_str	str_coverage;
+	t_str	str_success;
 
 	name = unit -> name;
-	tests_passed = ft_itoa(unit -> counter -> passed);
-	tests_total = ft_itoa(ft_countotal(unit -> counter));
+	str_passed = ft_itoa(unit -> counter -> passed);
+	str_total = ft_itoa(ft_countotal(unit -> counter));
+	str_coverage = ft_itoa((int)(unit -> counter -> threshold * 100));
 	if (ft_coverage_reached(unit -> counter))
 	{
-		str_passed = SUCCEESS;
+		str_success = SUCCEESS;
 	}
 	else
 	{
-		str_passed = FAILURE;
+		str_success = FAILURE;
 	}
-	return (ft_strnjoin(11,
-			LPURPLE, " ", WHITE, name, LGRAY, ": ", tests_passed, "/",
-			tests_total, " tests passed - ", str_passed));
+	return (ft_strnjoin(14,
+			LPURPLE, " ", WHITE, name, LGRAY, ": ", str_passed, "/",
+			str_total, " tests passed  ", WHITE, str_coverage,
+			"\% coverage needed  ", str_success));
 }
 
 /*
@@ -65,22 +69,25 @@ static char	*ft_unit_recap(t_unit *unit)
  */
 static char	*ft_runner_message(t_runner *runner)
 {
-	t_str	units_total;
-	t_str	units_passed;
 	t_str	str_passed;
+	t_str	str_total;
+	t_str	str_coverage;
+	t_str	str_success;
 
-	units_total = ft_itoa(ft_countotal(runner -> counter));
-	units_passed = ft_itoa(runner -> counter -> passed);
+	str_passed = ft_itoa(runner -> counter -> passed);
+	str_total = ft_itoa(ft_countotal(runner -> counter));
+	str_coverage = ft_itoa((int)(runner -> counter -> threshold * 100));
 	if (ft_coverage_reached(runner -> counter))
 	{
-		str_passed = SUCCEESS;
+		str_success = SUCCEESS;
 	}
 	else
 	{
-		str_passed = FAILURE;
+		str_success = FAILURE;
 	}
-	return (ft_strnjoin(6, " ", units_passed, "/", units_total,
-			" units passed - ", str_passed));
+	return (ft_strnjoin(9, " ", str_passed, "/", str_total,
+			" units passed  ", WHITE, str_coverage,
+			"\% coverage needed  ", str_success));
 }
 
 /*
@@ -88,7 +95,7 @@ static char	*ft_runner_message(t_runner *runner)
  *
  * @param any (t_any): the unit in the linked list.
  */
-static void	ft_runner_run_tests(t_any any)
+static void	ft_runner_test_unit(t_any any)
 {
 	t_unit	*unit;
 
@@ -105,7 +112,7 @@ static void	ft_runner_run_tests(t_any any)
 		ft_countfail(unit -> runner -> counter);
 	}
 	ft_putendl_fd(ft_strnjoin(3, LPURPLE, "|", LGRAY), STDOUT);
-	ft_putendl_fd(ft_unit_recap(unit), STDOUT);
+	ft_putendl_fd(ft_unit_message(unit), STDOUT);
 	ft_putendl_fd("", STDOUT);
 }
 
@@ -121,7 +128,7 @@ void	ft_run_tests(t_runner *runner)
 			5, WHITE, "Running Tests", LCYAN, "    ", LGRAY),
 		STDOUT);
 	ft_putendl_fd("", STDOUT);
-	ft_lstiter(runner -> units_head, &ft_runner_run_tests);
+	ft_lstiter(runner -> units_head, &ft_runner_test_unit);
 	ft_putendl_fd(ft_runner_message(runner), STDOUT);
 	ft_free_all(runner);
 }
