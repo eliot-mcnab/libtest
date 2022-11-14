@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test_message.c                                  :+:      :+:    :+:   */
+/*   ft_message_equal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:41:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 13:47:38 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:14:30 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  *
  * @return (t_str): " [str_var] should equal [str_val] - [str_success]"
  */
-char	*ft_test_message(t_str str_var, t_str str_val, bool success)
+char	*ft_message_equal(t_str str_var, t_str str_val, bool success)
 {
 	t_str	str_success;
 

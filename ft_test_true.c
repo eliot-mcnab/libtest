@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test_nequal.c                                   :+:      :+:    :+:   */
+/*   ft_test_true.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 17:39:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/14 10:19:06 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/14 10:09:28 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/14 10:30:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
 
 /*
- * @brief Test NON equality of a variable.
+ * @brief Test boolean equality of a variable.
  *
  * @param unit (t_unit *): the unit to which the tests are applied.
  * @param var (int): the variable to test.
- * @param val (int): the value the variable should NOT be equal to.
  *
- * @return (bool): true if the value of [var] DOES NOT match [val],
- * 	false otherwise.
+ * @return (bool): true if the value of [var] is true, false otherwise.
  */
-bool	ft_test_nequal(t_unit *unit, int var, int val)
+bool	ft_test_true(t_unit *unit, int var)
 {
 	t_str	str_var;
-	t_str	str_val;
 	bool	success;
 
 	str_var = ft_itoa(var);
-	str_val = ft_itoa(val);
-	if (var == val)
+	if (var != 0)
 	{
 		ft_countpass(unit -> counter);
 		success = true;
@@ -40,6 +36,6 @@ bool	ft_test_nequal(t_unit *unit, int var, int val)
 		ft_countfail(unit -> counter);
 		success = false;
 	}
-	ft_putendl_fd(ft_message_nequal(str_var, str_val, success), STDOUT);
+	ft_putendl_fd(ft_message_true(str_var, success), STDOUT);
 	return (success);
 }

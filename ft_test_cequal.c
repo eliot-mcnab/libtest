@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:55:39 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:20:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ bool	ft_test_cequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 		ft_countfail(unit -> counter);
 		success = true;
 	}
-	ft_putendl_fd(ft_test_message(str_var, str_val, success), STDOUT);
+	ft_putendl_fd(ft_message_equal(str_var, str_val, success), STDOUT);
 	return (success);
 }

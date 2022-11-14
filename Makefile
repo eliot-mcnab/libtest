@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 11:22:09 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/12 18:01:47 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/14 10:48:33 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,12 @@ export SEPERATOR
 
 # .c files
 define CFILES
-	ft_runner_create.c	ft_run_tests.c		ft_runner_success.c	ft_test_cequal.c
-	ft_test_equal.c		ft_test_strequal.c	ft_tests_success.c	ft_unit_add.c
-	ft_test_message.c	ft_counter.c		ft_countfail.c		ft_countpass.c
+	ft_runner_create.c	ft_run_tests.c		ft_test_cequal.c	ft_ctest.c
+	ft_test_equal.c		ft_test_strequal.c	ft_unit_add.c		ft_test_ncequal.c
+	ft_message_equal.c	ft_counter.c		ft_countfail.c		ft_countpass.c
 	ft_countotal.c		ft_coverage.c		ft_coverage_reached.c
-	ft_free_all.c		ft_test_nequal.c	ft_test_nstrequal.c	ft_test_ncequal.c
+	ft_free_all.c		ft_test_nequal.c	ft_test_nstrequal.c	ft_message_true.c
+	ft_test_true.c		ft_test_and.c
 endef
 
 # .o files

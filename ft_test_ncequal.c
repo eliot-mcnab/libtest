@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:49:22 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/12 17:55:07 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:19:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * 	representation of [var] and [val].
  *
  * @return (bool): true if the value of [var] DOES NOT equal [val] according
- * to [f_cmp].
+ * to the comparison function in [conv].
  */
 bool	ft_test_ncequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 {
@@ -45,6 +45,6 @@ bool	ft_test_ncequal(t_unit *unit, t_any var, t_any val, t_conv *conv)
 		ft_countfail(unit -> counter);
 		success = false;
 	}
-	ft_test_message(str_var, str_val, success);
+	ft_putendl_fd(ft_message_nequal(str_var, str_val, success), STDOUT);
 	return (success);
 }
