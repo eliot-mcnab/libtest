@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:10:12 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/14 10:46:50 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:12:51 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ bool		ft_test_ncequal(t_unit *unit, t_any var, t_any val, t_conv *conv);
 bool		ft_ctest(t_unit *unit, t_any var, t_any val, t_test f_test);
 bool		ft_test_true(t_unit *unit, int var);
 bool		ft_test_and(t_unit *unit, int val, int var);
+bool		ft_test_beq(t_unit *unit, int var, int val);
 
 // counting
 t_counter	*ft_counter(double threshold);
